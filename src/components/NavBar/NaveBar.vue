@@ -1,23 +1,23 @@
 <template>
-  <div class="container-fl   ">
+  <div class="container-fl">
     <div class="nav">
-    <div class="logo">
-      <img src="../../assets/brain.png" alt="" />
-      <div>Brain&Troma</div>
+      <div class="logo">
+        <img src="../../assets/brain.png" alt="" />
+        <div>Brain&Troma</div>
+      </div>
+      <div class="list">
+        <ul>
+          <li><router-link to="/"> Home</router-link></li>
+          <li><router-link to="/12"> Services</router-link></li>
+          <li><router-link to="/about"> About</router-link></li>
+          <!-- <li><router-link to="/"> Home</router-link></li> -->
+        </ul>
+      </div>
+      <div class="log">
+        <router-link class="abtn abtn1" to="/login"> Login </router-link>
+        <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
+      </div>
     </div>
-    <div class="list">
-      <ul>
-        <li><router-link to="/"> Home</router-link></li>
-        <li><router-link to="/12"> Services</router-link></li>
-        <li><router-link to="/about"> About</router-link></li>
-        <!-- <li><router-link to="/"> Home</router-link></li> -->
-      </ul>
-    </div>
-    <div class="log">
-      <router-link class="abtn abtn1" to="/login"> Login </router-link>
-      <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -62,11 +62,11 @@ export default {};
         font-weight: 400;
         line-height: 30px;
         text-align: center;
-        opacity: .7;
+        opacity: 0.7;
       }
-      a.router-link-active{
+      a.router-link-active {
         font-weight: 700;
-        font-size: 20px ;
+        font-size: 20px;
         opacity: 1;
       }
     }
@@ -74,10 +74,26 @@ export default {};
   .log {
     flex: 1;
     display: flex;
-    align-items:center ;
+    align-items: center;
     gap: 20px;
-
+    a.abtn {
+      padding: 5px 25px;
+      gap: 10px;
+      border-radius: 21px;
+      opacity: 0px;
+      color: inherit;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+    }
+    a.abtn1 {
+      background: var(--graycolor);
+      color: black;
+    }
+    a.abtn2 {
+      background: white;
+      color: var(--textcolor);
+    }
   }
 }
-
 </style>
