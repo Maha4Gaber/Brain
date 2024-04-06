@@ -1,5 +1,6 @@
 <template>
-  <div class="nav">
+  <div class="container-fl   ">
+    <div class="nav">
     <div class="logo">
       <img src="../../assets/brain.png" alt="" />
       <div>Brain&Troma</div>
@@ -13,9 +14,10 @@
       </ul>
     </div>
     <div class="log">
-      <router-link class="abtn abtn1" to="/login"> Login </router-link>
-      <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
+      <router-link class=" 1" to="/login"> Login </router-link>
+      <router-link class=" 2" to="/signup"> Sign Up</router-link>
     </div>
+  </div>
   </div>
 </template>
 
