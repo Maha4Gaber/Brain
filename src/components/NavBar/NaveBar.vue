@@ -13,7 +13,8 @@
       </ul>
     </div>
     <div class="log">
-      pS(Dfseow9)
+      <router-link class="abtn abtn1" to="/login"> Login </router-link>
+      <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
     </div>
   </div>
 </template>
