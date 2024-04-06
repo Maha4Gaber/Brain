@@ -28,6 +28,23 @@ body{
   --graycolor:#BBE0DD;
   --textcolor:#199A8D;
 }
+/* Track */
+::-webkit-scrollbar {
+  width: 10px; /* width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: linear-gradient(to top,var(--maincolor),var(--graycolor));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--textcolor);
+   /* color of the scrollbar handle on hover */
+}
+
 a.abtn{
   padding: 5px 25px;
   gap: 10px;
