@@ -76,7 +76,7 @@ export default {};
     display: flex;
     align-items: center;
     gap: 20px;
-    a.abtn {
+    a {
       padding: 5px 25px;
       gap: 10px;
       border-radius: 21px;
