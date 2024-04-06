@@ -56,7 +56,7 @@ export default {};
         color: var(--whitecolor);
         text-decoration: none;
         font-family: Poppins;
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 400;
         line-height: 30px;
         text-align: center;
