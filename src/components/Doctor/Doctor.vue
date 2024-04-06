@@ -1,0 +1,121 @@
+<template>
+  <div class="container doctors">
+    <h3>Our Doctors</h3>
+    <h1>Meet Our Professional Doctors</h1>
+    <div class="cards">
+      <div class="card" v-for="item in doctors" :key="item.id">
+        <img :src="require(`@/assets/${item.img}.png`)" alt="" />
+        <div class="details">
+          <h2>{{ item.name }}</h2>
+          <p>
+            <i class="fa-solid fa-location-dot"></i>
+            {{ item.location }}</p>
+          <div class="stars">
+            <i
+              v-for="(star, index) in item.rate"
+              class="fa fa-star"
+              :key="index"
+            >
+            </i>
+          </div>
+          <router-link to="">View More..</router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      doctors: [
+        {
+          id: 1,
+          name: "Dr.Sama",
+          location: "Egypt",
+          rate: 5,
+          img: "doc1",
+        },
+        {
+          id: 2,
+          name: "Dr.Eslam",
+          location: "Egypt",
+          rate: 5,
+          img: "doc2",
+        },
+        {
+          id: 3,
+          name: "Dr.Alia",
+          location: "Egypt",
+          rate: 5,
+          img: "doc3",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style lang="scss">
+.doctors {
+  margin-bottom: 50px;
+  h3 {
+    color: var(--textcolor);
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+  }
+  h1 {
+    text-align: center;
+    width: 100%;
+    margin: 30px 0;
+    color: black !important ;
+  }
+  .cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 30px 0;
+    .card {
+      width: 300px;
+      box-shadow: 0 0 8px 0 #00000046;
+      img {
+        width: 100%;
+      }
+      .details{
+        width: 100%;
+        padding: 10px 10px 20px;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        h2{
+          font-size: 32px;
+          font-weight: 500;
+        }
+        p{
+          color: #CCC7C7;
+          font-size: 24px;
+          i{
+            color: #868383;
+          }
+        }
+        .stars{
+          color:#F1C40F ;
+        }
+        a{
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 20px;
+          color: var(--textcolor);
+        }
+      }
+    }
+  }
+}
+</style>
