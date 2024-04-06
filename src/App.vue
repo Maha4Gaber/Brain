@@ -28,5 +28,22 @@ body{
   --graycolor:#BBE0DD;
   --textcolor:#199A8D;
 }
-
+a.abtn{
+  padding: 5px 25px;
+  gap: 10px;
+  border-radius: 21px;
+  color: inherit;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  
+}
+a.abtn1{
+  background:var(--graycolor);
+  color: black;
+}
+a.abtn2{
+  background:white;
+  color:var(--textcolor);
+}
 </style>
