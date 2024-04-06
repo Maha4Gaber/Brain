@@ -13,8 +13,7 @@
       </ul>
     </div>
     <div class="log">
-      <router-link class="abtn abtn1" to="/login"> Login 1212</router-link>
-      <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
+      pS(Dfseow9)
     </div>
   </div>
 </template>
