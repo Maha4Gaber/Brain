@@ -63,4 +63,15 @@ a.abtn2{
   background:white;
   color:var(--textcolor);
 }
+.btnlink{
+  color: var(--whitecolor);
+  background-color: var(--maincolor);
+  padding: 10px 20px;
+  width: fit-content;
+  text-decoration: none;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: bold;
+  display: block;
+}
 </style>

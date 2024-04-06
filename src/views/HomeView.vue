@@ -1,7 +1,7 @@
 <template>
   <div class="container home">
     <div class="row">
-      <div class="col-6 mt-5">
+      <div class="col-7 mt-5">
         <h1>What is Brain Tumor ?</h1>
         <p>
           A brain tumor is a growth of cells in the brain or near it.Brain
@@ -10,9 +10,9 @@
           gland; the pineal gland; and the membranes that cover the surface of
           the brain.
         </p>
-        <router-link to="/about" ></router-link>
+        <router-link to="/about" class="btnlink mt-5" >Read More</router-link>
       </div>
-      <div class="col-6">
+      <div class="col-5 ">
         <img src="../assets/home1.png" alt="" />
       </div>
     </div>
