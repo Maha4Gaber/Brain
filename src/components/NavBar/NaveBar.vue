@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div class="log">
-      <router-link class="abtn abtn1" to="/login"> Login</router-link>
+      <router-link class="abtn abtn1" to="/login"> Login 1212</router-link>
       <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
     </div>
   </div>
@@ -64,6 +64,7 @@ export default {};
       }
       a.router-link-active{
         font-weight: 700;
+        font-size: 20px ;
         opacity: 1;
       }
     }
