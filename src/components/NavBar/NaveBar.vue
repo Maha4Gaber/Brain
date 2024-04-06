@@ -14,8 +14,8 @@
       </ul>
     </div>
     <div class="log">
-      <router-link class=" 1" to="/login"> Login </router-link>
-      <router-link class=" 2" to="/signup"> Sign Up</router-link>
+      <router-link class="abtn abtn1" to="/login"> Login </router-link>
+      <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
     </div>
   </div>
   </div>
