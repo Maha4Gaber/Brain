@@ -1,30 +1,31 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <NaveBar />
   <router-view/>
 </template>
-
+<script>
+import NaveBar from '@/components/NavBar/NaveBar'
+export default {
+  components:{NaveBar}
+  
+}
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
 }
-
-nav {
-  padding: 30px;
+body{
+  padding: 0;
+  margin: 0 ;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+:root{
+  --maincolor: #1A998E;
+  --whitecolor: #FFFFFF;
+  --graycolor:#BBE0DD;
+  --textcolor:#199A8D;
 }
 </style>
