@@ -1,18 +1,17 @@
 <template>
   <div class="container home">
     <div class="row section1">
-      <div class="col-lg-7 mt-5  col-sm-12">
-        <h1>What is Brain Tumor ?</h1>
+      <div class="col-lg-7 mt-5 col-sm-12">
+        <h1>Automated Detection of Brain Tumor and Stroke using Al</h1>
         <p>
-          A brain tumor is a growth of cells in the brain or near it.Brain
-          tumors can happen in the brain tissue.Brain tumors also can happen
-          near the brain tissue .Nearby locations include nerves; the pituitary
-          gland; the pineal gland; and the membranes that cover the surface of
-          the brain.
+          This website offers a cutting-edge solution for the early detection
+          and diagnosis of brain tumors and strokes using advanced artificial
+          intelligence (AI) algorithms. By leveraging deep learning and image
+          processing techniques.
         </p>
-        <router-link to="/about" class="btnlink mt-5" >Read More</router-link>
+        <router-link to="/about" class="btnlink mt-5">Read More</router-link>
       </div>
-      <div class="col-lg-5 ">
+      <div class="col-lg-5">
         <img src="../assets/home1.png" alt="" />
       </div>
     </div>
@@ -24,14 +23,14 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import Section2 from '@/components/home/Section2'
-import Doctor from '@/components/Doctor/Doctor.vue';
+import Section2 from "@/components/home/Section2";
+import Doctor from "@/components/Doctor/Doctor.vue";
 export default {
   name: "HomeView",
   components: {
     HelloWorld,
     Section2,
-    Doctor
+    Doctor,
   },
 };
 </script>
@@ -39,15 +38,15 @@ export default {
 .home {
   margin-top: 80px;
   @media (max-width: 768px) {
-  .section1{
-    flex-direction: column-reverse;
-}
+    .section1 {
+      flex-direction: column-reverse;
+    }
   }
   h1 {
     color: var(--maincolor);
     font-size: 35px;
   }
-  p{
+  p {
     font-size: 20px;
     padding: 10px 50px 0 0;
   }

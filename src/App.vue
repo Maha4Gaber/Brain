@@ -64,14 +64,15 @@ a.abtn2{
   color:var(--textcolor);
 }
 .btnlink{
-  color: var(--whitecolor);
+  color: var(--whitecolor) !important;
   background-color: var(--maincolor);
-  padding: 10px 20px;
+  padding: 7px 20px;
   width: fit-content;
   text-decoration: none;
   font-size: 18px;
   border-radius: 10px;
   font-weight: bold;
   display: block;
+  border: none;
 }
 </style>
