@@ -31,7 +31,7 @@
       <div :class="  isToggled?'active dorp':' dorp'">
         <div class="list col-5">
         <ul>
-          <li><router-link to="/"> Home</router-link></li>
+          <li><router-link to="/"> Home2</router-link></li>
           <li><router-link to="/services"> Services</router-link></li>
           <li><router-link to="/about"> About</router-link></li>
           <!-- <li><router-link to="/"> Home</router-link></li> -->
