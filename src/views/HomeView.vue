@@ -45,11 +45,11 @@ export default {
   }
   h1 {
     color: var(--maincolor);
-    font-size: 48px;
+    font-size: 35px;
   }
   p{
-    font-size: 24px;
-    padding: 10px 20px 0 0;
+    font-size: 20px;
+    padding: 10px 50px 0 0;
   }
   img {
     max-width: 100%;

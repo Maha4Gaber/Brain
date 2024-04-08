@@ -56,11 +56,11 @@ export default {};
       position: relative;
 
       p {
-        font-size: 16px;
+        font-size: 14px;
       }
       a,
       h2 {
-        font-size: 24px;
+        font-size: 20px;
         color: var(--textcolor);
         font-weight: bold;
         text-align: center;
@@ -75,8 +75,8 @@ export default {};
       }
       .box1 {
         text-align: center;
-        height: 300px;
-        width: 270px;
+        height: 280px;
+        width: 230px;
         background-color: #effef1;
         padding: 20px 10px;
       }
@@ -84,8 +84,8 @@ export default {};
         padding: 20px 10px;
         text-align: center;
 
-        height: 270px;
-        width: 270px;
+        height: 230px;
+        width: 230px;
         background-color: #fef0ff;
       }
     }

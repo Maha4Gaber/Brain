@@ -69,7 +69,7 @@ a.abtn2{
   padding: 10px 20px;
   width: fit-content;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   border-radius: 10px;
   font-weight: bold;
   display: block;

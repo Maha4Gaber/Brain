@@ -69,7 +69,7 @@ export default {
   h1 {
     text-align: center;
     width: 100%;
-    margin: 30px 0;
+    margin: 30px 0 50px;
     color: black !important ;
   }
   .cards {
@@ -77,10 +77,10 @@ export default {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
     margin: 30px 0;
     .card {
-      width: 300px;
+      width: 250px;
       box-shadow: 0 0 8px 0 #00000046;
       img {
         width: 100%;
@@ -90,23 +90,25 @@ export default {
         padding: 10px 10px 20px;
         text-align: center;
         display: flex;
-        gap: 10px;
+        gap: 5px;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
         h2{
-          font-size: 32px;
+          font-size: 25px;
           font-weight: 500;
         }
         p{
           color: #CCC7C7;
-          font-size: 24px;
+          font-size: 18px;
           i{
             color: #868383;
           }
         }
         .stars{
           color:#F1C40F ;
+          display: flex;
+          gap: 3px;
         }
         a{
           text-decoration: none;
