@@ -4,6 +4,8 @@ import About from '../views/AboutView.vue'
 import Login from '@/views/Login/login.vue'
 import Signup from '@/views/Signup/Signup.vue'
 import Services from '@/views/Services/Services'
+import Doctor from '@/views/Doctor.vue'
+import { param } from 'jquery'
 const routes = [
   {
     path: '/',
@@ -24,6 +26,12 @@ const routes = [
     path: '/services',
     name: 'services',
     component: Services
+  },
+  {
+    path: '/doctor/:id',
+    name: 'doctor',
+    component: Doctor,
+    props: true,
   },
   {
     path: '/about',

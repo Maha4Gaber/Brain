@@ -9,34 +9,43 @@
           <div class="form p-5">
             <h2>Welcome Back!</h2>
             <p>Login to continue</p>
-            <form @submit.prevent="">
+            <form @submit.prevent="login">
               <label for="">Email</label>
               <div class="input">
-                <input type="text" placeholder="Please enter your email" />
+                <input
+                  type="text"
+                  v-model="state.email"
+                  placeholder="Please enter your email"
+                />
               </div>
+              <span class="text-danger fw-bold" v-if="v$.email.$error">
+                {{ v$.email.$errors[0].$message }} </span
+              ><br />
               <label for="">Password</label>
               <div class="input">
                 <input
-                  v-bind:type="[showPassword ? 'text' : 'password']"
+                  :type="state.showPassword ? 'text' : 'password'"
+                  v-model="state.password"
                   placeholder="Please enter your Password"
                 />
-                <button class="toggle" @click="toggleShowPassword">
-                  <i
-                    class=' fas fa-eye-slash'
-                  ></i>
-                </button>
+                <span class="toggle" @click="toggleShowPassword">
+                  <i class="fas fa-eye-slash"></i>
+                </span>
               </div>
+              <span class="text-danger fw-bold" v-if="v$.password.$error">
+                {{ v$.password.$errors[0].$message }}
+              </span>
               <div class="row mt-2">
                 <router-link to="/c" class="text-end"
                   >Forget Pasword!</router-link
                 >
               </div>
-            </form>
-            <div class="row mt-2">
-              <div class="col-12">
-                <button  class="btnlink">Login</button>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <button type="submit" class="btnlink">Login</button>
+                </div>
               </div>
-            </div>
+            </form>
             <div class="row mt-3">
               <div class="col-12">
                 <span>New User? </span>
@@ -51,25 +60,60 @@
 </template>
 
 <script>
+import { computed, onMounted, reactive } from "vue";
+
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, minLength } from "@vuelidate/validators";
 export default {
-  data() {
-    return {
+  setup() {
+    const state = reactive({
+      email: "",
+      password: "",
       showPassword: false,
-      password: null,
+    });
+    const store = useStore();
+    onMounted(() => {
+      console.log(store.state.patient);
+      if (store.state.patient != null) {
+        // router.push("/");
+      }
+    });
+    const router = useRouter();
+    const rules = computed(() => {
+      return {
+        email: { email, required },
+        password: { required, minLength: minLength(3) },
+      };
+    });
+    const v$ = useVuelidate(rules, state);
+    const login = async () => {
+      v$.value.$validate();
+      if (!v$.value.$error) {
+        try {
+          await store.dispatch("patientLogin", {
+            email: state.email,
+            password: state.password,
+          });
+          router.push("/services");
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+      }
     };
-  },
-  // computed: {
-  //   buttonLabel() {
-  //     return this.showPassword ? "Hide" : "Show";
-  //   },
-  // },
-  methods: {
-    toggleShowPassword() {
-      this.showPassword = !this.showPassword;
-      let x=document.querySelector('.fa-eye-slash')?document.querySelector('.fa-eye-slash'):document.querySelector('.fa-eye')
-      x.classList.toggle('fa-eye-slash')
-      x.classList.toggle('fa-eye')
-    },
+    function toggleShowPassword() {
+      state.showPassword = !state.showPassword;
+      let x = document.querySelector(".fa-eye-slash")
+        ? document.querySelector(".fa-eye-slash")
+        : document.querySelector(".fa-eye");
+      x.classList.toggle("fa-eye-slash");
+      x.classList.toggle("fa-eye");
+    }
+
+    return { state, login, v$, toggleShowPassword };
   },
 };
 </script>
@@ -106,7 +150,7 @@ export default {
       border-radius: 10px;
       input {
         background-color: #e6f0ed;
-        width: 95%;
+        width: 93%;
         border: none;
         outline: none;
         padding: 0px 10px;

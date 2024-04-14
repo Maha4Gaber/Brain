@@ -18,7 +18,7 @@
             >
             </i>
           </div>
-          <router-link to="">View More..</router-link>
+          <router-link :to="{ name: 'doctor', params: { id:item.id}}">View More..</router-link>
         </div>
       </div>
     </div>

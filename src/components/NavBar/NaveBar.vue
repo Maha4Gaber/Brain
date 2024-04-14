@@ -8,12 +8,15 @@
       <div class="list col-5">
         <ul>
           <li><router-link to="/"> Home</router-link></li>
-          <li><router-link to="/12"> Services</router-link></li>
+          <li><router-link to="/services"> Services</router-link></li>
           <li><router-link to="/about"> About</router-link></li>
           <!-- <li><router-link to="/"> Home</router-link></li> -->
         </ul>
       </div>
-      <div class="log col-3">
+      <div class="log col-3" v-if="state.login">
+        <a class="abtn abtn2"  @click="login"> Logout</a>
+      </div>
+      <div class="log col-3" v-else>
         <router-link class="abtn abtn1" to="/login"> Login </router-link>
         <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
       </div>
@@ -31,13 +34,16 @@
       <div :class="  isToggled?'active dorp':' dorp'">
         <div class="list col-5">
         <ul>
-          <li><router-link to="/"> Home2</router-link></li>
+          <li><router-link to="/"> Home</router-link></li>
           <li><router-link to="/services"> Services</router-link></li>
           <li><router-link to="/about"> About</router-link></li>
           <!-- <li><router-link to="/"> Home</router-link></li> -->
         </ul>
       </div>
-      <div class="log col-3">
+      <div class="log col-3" v-if="state.login">
+        <a class="abtn abtn2"  @click="login"> Logout</a>
+      </div>
+      <div class="log col-3" v-else>
         <router-link class="abtn abtn1" to="/login"> Login </router-link>
         <router-link class="abtn abtn2" to="/signup"> Sign Up</router-link>
       </div>
@@ -47,6 +53,10 @@
 </template>
 
 <script>
+import { computed, onMounted, reactive } from "vue";
+
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   data() {
     return {
@@ -59,6 +69,29 @@ export default {
       this.isToggled = !this.isToggled;
       console.log(this.isToggled);
     },
+  },
+  setup() {
+    const state = reactive({
+      login: true
+    });
+    const store = useStore();
+    const router = useRouter();
+    onMounted(() => {
+      console.log(store.state.patient);
+      if (store.state.patient == null) {
+        state.login=false
+      }
+    });
+    const login = async () => {
+        try {
+          await store.dispatch("patientLogout");
+          // router.push("/login");
+        } catch (err) {
+          console.log(err);
+        }
+      
+    };
+    return { state, login };
   },
 };
 </script>
