@@ -80,67 +80,15 @@ const actions = {
 
   //patient Signup
 
-  // async patientSignup(context, data) {
-  //   try {
-  //     let response = await axios.post("/api/register", data);
-  //     if (response.status == 201) {
-  //       const resData = response.data.patient.original;
-
-  //       localStorage.setItem("Std_id", resData.user.id);
-  //       localStorage.setItem("Std_name", resData.user.f_name);
-  //       context.commit("setpatient", resData.user);
-  //       localStorage.setItem("token", resData.access_token);
-  //       axios.defaults.headers.common["Authorization"] =
-  //         "Bearer " + localStorage.getItem("token");
-  //       console.log(localStorage.getItem("token"));
-  //     } else {
-  //       const errors = response.response.data;
-  //       // console.log(errors);
-  //       var err_str = "";
-  //       for (var prop in errors) {
-  //         err_str += errors[prop][0] + "\n";
-  //       }
-  //       // console.log(err_str);
-  //       throw new Error(err_str);
-  //     }
-  //   } catch (err) {
-  //     if (err_str) {
-  //       throw new Error(err_str);
-  //     } else {
-  //       throw new Error("حدث خطأ ما , عاود المحاولة في وقت اخر");
-  //     }
-  //   }
-  // },
-
-  //patient Update
-
-
-
-  // // patient brach
-
-  // patientBrach(context, id) {
-  //   context.commit("setpatientBrach", id);
-  // },
-
-  // Login patient
-  async patientLogin(context, { email, password }) {
-    let data={
-      email: email,
-      password: password,
-    }
+  async patientSignup(context, data) {
+    console.log(data);
     try {
-      let response = await axios.post("api/v1/auth/login", {
-        email: email,
-        password: password,
-      });
+      let response = await axios.post("api/v1/auth/signUp", data);
       if (response.status == 200) {
-        console.log(response.data);
-        // localStorage.setItem("Std_id", response.data.user.id);
-        // localStorage.setItem("Std_name", response.data.user.name);
-        data.access_token=response.data.accessToken
-        data.refreshToken=response.data.refreshToken
-        console.log(data);
-        context.commit("setpatient", data);
+        console.log(response.data.user);
+        localStorage.setItem("patient_id", response.data.user.id);
+        localStorage.setItem("patient", response.data.user.firstName);
+        context.commit("setpatient", response.data.user);
         localStorage.setItem("token", response.data.accessToken);
         localStorage.setItem("refreshToken", response.data.refreshToken);
         axios.defaults.headers.common["Authorization"] =
@@ -149,7 +97,23 @@ const actions = {
         throw new Error("Could not Complete patient Login ..");
       }
     } catch (err) {
-      throw new Error(err);
+       console.log(err);
+    }
+  },
+  async patientLogin(context, data) {
+    try {
+      let response = await axios.post("api/v1/auth/login",data );
+      if (response.status == 200) {
+        localStorage.setItem("patient_id", response.data.user.id);
+        localStorage.setItem("patient", response.data.user.firstName);
+        context.commit("setpatient", response.data.user);
+        localStorage.setItem("token", response.data.accessToken);
+        localStorage.setItem("refreshToken", response.data.refreshToken);
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("token");
+      } 
+    } catch (err) {
+       console.log(err);
     }
   },
 

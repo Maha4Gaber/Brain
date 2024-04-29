@@ -3,7 +3,7 @@
     <div class="navbare">
       <router-link to="/" class="logo col-3">
         <img src="../../assets/brain.png" alt="" />
-        <div>Brain&Troma</div>
+        <div>MEDTECH</div>
       </router-link>
       <div class="list col-5">
         <ul>
@@ -25,7 +25,7 @@
       <div class="bar">
         <router-link to="/" class="logo col-3">
           <img src="../../assets/brain.png" alt="" />
-          <div>Brain&Troma</div>
+          <div>MEDTECH</div>
         </router-link>
         <button @click="toggleButton" :class="isToggled?'active toggled':' toggled'">
           <i class="fa-solid fa-list-check"></i>

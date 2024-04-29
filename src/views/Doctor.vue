@@ -1,5 +1,5 @@
 <template>
-  <div class="doctor container">
+  <div class="doctor container mb-5">
     <div class="row">
        <div class="col-lg-3 col-md-4">
         <div class="image">
@@ -25,12 +25,20 @@
         </div>
       </div> 
     </div>
+    <Appointments></Appointments>
+    <Booked></Booked>
   </div>
 </template>
-
 <script>
 import { reactive,computed,onMounted } from "vue";
+import Appointments from '@/components/Doctor/Appointments'
+import Booked from '@/components/Doctor/Booked.vue'
 export default {
+  components:{
+    Appointments,
+    Booked
+  },
+
 data() {
     return {
       
