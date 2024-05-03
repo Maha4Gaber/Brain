@@ -5,6 +5,7 @@ import Login from '@/views/Login/login.vue'
 import Signup from '@/views/Signup/Signup.vue'
 import Services from '@/views/Services/Services'
 import Doctor from '@/views/Doctor.vue'
+import Dprofile from '@/views/Dprofile'
 import { param } from 'jquery'
 const routes = [
   {
@@ -31,6 +32,12 @@ const routes = [
     path: '/doctor/:id',
     name: 'doctor',
     component: Doctor,
+    props: true,
+  },
+  {
+    path: '/dprofile/:id',
+    name: 'dprofile',
+    component: Dprofile,
     props: true,
   },
   {

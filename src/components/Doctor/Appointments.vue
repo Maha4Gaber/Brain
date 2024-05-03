@@ -5,19 +5,19 @@
     </div>
   </div>
   <div class="row mt-5">
-    <div class="boxs">
-      <div class="box">
+    <div class="boxs" >
+      <div class="box"  v-for=" item in state.Booked"  :key="item.id">
         <div class="name">
-          Ali Maher
+          {{ item.user[1].firstName + ' ' + item.user[1].lastName}}
         </div>
         <div class="day">
-          Sunday
+          {{item.day}}
         </div>
         <div class="appointment">
           <i class="fa-solid fa-clock"></i>
-          11:00 Am 
+          {{item.fromm}} Pm
           . 
-          02:00 Pm 
+          {{item.too}} Pm 
           
         </div>
         <div class="location">
@@ -27,46 +27,74 @@
           </p>
         </div>
         <div class="status">
-          <i class="fa-solid fa-clock"></i>
-          Watiting
+          <div v-if="item.cancle!=null"  style="color: #E94D4D;">
+            Canceled
+          </div>
+          <div v-else-if="item.confirmed==true"  style="color: #1A998E;">
+            <i class="fa-solid fa-check-circle "></i>
+            Confirmed
+          </div>
+          <div v-else-if="item.cancle==null &&item.confirmed==null">
+            <i class="fa-solid fa-clock"></i>
+            Watiting
+          </div>
         </div>
       </div>
-      <div class="box">
-        <div class="name">
-          Ali Maher
-        </div>
-        <div class="day">
-          Sunday
-        </div>
-        <div class="appointment">
-          <i class="fa-solid fa-clock"></i>
-          11:00 Am 
-          . 
-          02:00 Pm 
-          
-        </div>
-        <div class="location">
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Egypt
-          </p>
-        </div>
-        <div class="status">
-          <i class="fa-solid fa-clock"></i>
-          Watiting
-        </div>
-      </div>
+
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import axios from 'axios';
+import { computed, onMounted, reactive } from "vue";
 
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+export default {
+// api/v1/appointment/
+props: {
+    id: String,
+    userid:String
+  },
+    setup(props) {
+      const state = reactive({
+        Booked: [ ],
+      book:false
+    });
+    const store = useStore();
+    const router = useRouter();
+    onMounted(async() => {
+      // store.state.patient
+      if (store.state.patient == null) {
+        router.push("/login");
+      }
+      else{
+        try {
+          let userid=store.state.patient.id
+          await axios.get('api/v1/appointment/userId/'+userid)
+          .then(res=>{
+            console.log(res.data.filter(item=> item.user[1].id == props.id));
+            state.Booked=res.data.filter(item=> item.user[1].id == props.id)
+            
+          })
+          .catch(err=>{
+            console.log(err);
+          })
+        // // console.log(app);
+        // // console.log(id);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    });
+    
+    return { state };
+  },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .apphead{
   color: var(--maincolor);
 }
@@ -81,7 +109,7 @@ export default {
     box-shadow:  0 0 4px 0 #0000002d;    
     padding:7px  20px ;
       border-radius: 10px;
-    width: 30%;
+    width: 25%;
     .name{
       font-size: 24px;
       color: var(--maincolor);

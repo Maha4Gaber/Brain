@@ -4,15 +4,15 @@
     <h1>Meet Our Professional Doctors</h1>
     <div class="cards">
       <div class="card" v-for="item in doctors" :key="item.id">
-        <img :src="require(`@/assets/${item.img}.png`)" alt="" />
+        <img :src="item.img" alt="" />
         <div class="details">
-          <h2>{{ item.name }}</h2>
+          <h2>{{ item.firstName +' '+item.lastName }}</h2>
           <p>
             <i class="fa-solid fa-location-dot"></i>
             {{ item.location }}</p>
           <div class="stars">
             <i
-              v-for="(star, index) in item.rate"
+              v-for="(star, index) in 5"
               class="fa fa-star"
               :key="index"
             >
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -53,6 +55,20 @@ export default {
         },
       ],
     };
+  },
+  async mounted() {
+    await axios
+      .get(
+        "api/v1/user/role?roleName=doctor" 
+        )
+      .then((res) => {
+        console.log(res.data);
+        this.doctors = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+        // console.log(error.response.s);
+      });
   },
 };
 </script>

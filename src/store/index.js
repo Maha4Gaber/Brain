@@ -104,14 +104,17 @@ const actions = {
     try {
       let response = await axios.post("api/v1/auth/login",data );
       if (response.status == 200) {
+        // console.log(response.data.user.roles);
         localStorage.setItem("patient_id", response.data.user.id);
         localStorage.setItem("patient", response.data.user.firstName);
         context.commit("setpatient", response.data.user);
         localStorage.setItem("token", response.data.accessToken);
         localStorage.setItem("refreshToken", response.data.refreshToken);
+
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + localStorage.getItem("token");
       } 
+
     } catch (err) {
        console.log(err);
     }

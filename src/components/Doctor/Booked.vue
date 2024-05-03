@@ -7,57 +7,144 @@
   </div>
   <div class="row mt-5">
     <div class="boxs">
-      <div class="box text-center">
+      <div  v-for="item in state.Booked" :key="item.id"
+       class="box text-center">
         
         <div class="day">
-          Sunday
+          {{item.date+' '+ item.day }}
         </div>
         <div class="appointment">
           <i class="fa-solid fa-clock"></i>
-          From :   11:00 Am 
+          From :   {{ item.from }}
           <br>
           <i class="fa-solid fa-clock"></i>
           to :
-          02:00 Pm 
+          {{item.to}}
         </div>
-        <button>Book</button>
-      </div>
-      <div class="box text-center">
-        
-        <div class="day">
-          Sunday
-        </div>
-        <div class="appointment">
-          <i class="fa-solid fa-clock"></i>
-          From :   11:00 Am 
-          <br>
-          <i class="fa-solid fa-clock"></i>
-          to :
-          02:00 Pm 
-        </div>
-        <button>Book</button>
-      </div>
-      <div class="box text-center">
-        
-        <div class="day">
-          Sunday
-        </div>
-        <div class="appointment">
-          <i class="fa-solid fa-clock"></i>
-          From :   11:00 Am 
-          <br>
-          <i class="fa-solid fa-clock"></i>
-          to :
-          02:00 Pm 
-        </div>
-        <button>Book</button>
+        <button  @click="Book(item.id)" >Book</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// import store from '@/store';
+import axios from 'axios';
+import { computed, onMounted, reactive } from "vue";
+
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
+
+  props: {
+    appid: String,
+  },
+    setup(props) {
+      const state = reactive({
+        Booked: [
+        {
+          id: 1,
+          day: "Monday",
+          from: "2.00",
+          to:'4.00',
+          date:'6 - 5 - 2024'
+        },
+        {
+          id: 2,
+          day: "Tuesday",
+          from: "1.00",
+          to:'3.00',
+          date:'7 - 5 - 2024'
+        },
+        {
+          id: 3,
+          day: "Wednesday",
+          from: "3.00",
+          to:'5.00',
+          date:'8 - 5 - 2024'
+        },
+        {
+          id: 4,
+          day: "Thursday",
+          from: "1.00",
+          to:'3.00',
+          date:'9 - 5 - 2024'
+        },
+      ],
+      Bookeddone: [
+        {
+          id: 1,
+          day: "Monday",
+          from: "2.00",
+          to:'4.00',
+          date:'6 - 5 - 2024'
+        },
+        {
+          id: 2,
+          day: "Tuesday",
+          from: "1.00",
+          to:'3.00',
+          date:'7 - 5 - 2024'
+        },
+        {
+          id: 3,
+          day: "Wednesday",
+          from: "3.00",
+          to:'5.00',
+          date:'8 - 5 - 2024'
+        },
+        {
+          id: 1,
+          day: "Thursday",
+          from: "1.00",
+          to:'3.00',
+          date:'9 - 5 - 2024'
+        },
+      ],
+
+      book:false
+    });
+    const store = useStore();
+    const router = useRouter();
+    onMounted(() => {
+      // store.state.patient
+      if (store.state.patient == null) {
+        router.push("/login");
+      }
+    });
+    const Book = async (id) => {
+        try {
+          let userid=store.state.patient.id
+          // console.log(id);
+          let app=state.Booked.filter(item => item.id==id)
+          console.log(app);
+          await axios.post('api/v1/appointment',{
+            day:app[0].day,
+            date:app[0].date,
+            fromm:app[0].from,
+            too:app[0].to,
+            userId:userid,
+            doctorId:props.appid
+          })
+          .then(res=>{
+            // console.log(res);
+            state.Booked=state.Bookeddone.filter(item => item.id !=id)
+            state.Bookeddone=[...state.Booked]
+            state.book=true
+          })
+          .catch(err=>{
+            console.log(err);
+          })
+        // // console.log(app);
+        // // console.log(id);
+        } catch (err) {
+          console.log(err);
+        }
+      
+    };
+    return { state, Book };
+  },
+  
 
 }
 </script>

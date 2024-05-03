@@ -3,20 +3,20 @@
     <div class="row">
        <div class="col-lg-3 col-md-4">
         <div class="image">
-          <img :src="require(`../assets/${state.filteredItems.img}.png`)" alt="">
+          <!-- <img :src="state.filteredItems.img" alt=""> -->
         </div>
       </div>
       <div class="col-lg-9 col-md-8">
         <div class="details">
-          <h2>{{ state.filteredItems.name }}</h2>
-          <h3>{{ state.filteredItems.desc }}</h3>
+          <h2>{{ filteredItems.firstName +' '+filteredItems.lastName }}</h2>
+          <h3>{{ filteredItems.desc }}</h3>
           <p>
             <i class="fa-solid fa-location-dot"></i>
-            {{ state.filteredItems.location }}</p>
+            {{ filteredItems.location }}</p>
           <div class="stars">
             <h4>Rate here</h4>
             <i
-              v-for="(star, index) in state.filteredItems.rate"
+              v-for="(star, index) in 5"
               class="fa fa-star"
               :key="index"
             >
@@ -25,14 +25,15 @@
         </div>
       </div> 
     </div>
-    <Appointments></Appointments>
-    <Booked></Booked>
+    <Appointments :id=id></Appointments>
+    <Booked :appid=id></Booked>
   </div>
 </template>
 <script>
 import { reactive,computed,onMounted } from "vue";
 import Appointments from '@/components/Doctor/Appointments'
 import Booked from '@/components/Doctor/Booked.vue'
+import axios from "axios";
 export default {
   components:{
     Appointments,
@@ -41,49 +42,28 @@ export default {
 
 data() {
     return {
-      
+      filteredItems:{}
     };
   },
   props: {
     id: String,
   },
-  setup(props) {
-    const state = reactive({
-      filteredItems:{},
-      doctors: [
-        {
-          id: 1,
-          name: "Dr.Sama",
-          location: "Egypt",
-          rate: 5,
-          img: "doc1",
-          desc:'Tumor specialist1'
-        },
-        {
-          id: 2,
-          name: "Dr.Eslam",
-          location: "Egypt",
-          rate: 5,
-          img: "doc2",
-          desc:'Tumor specialist2'
-        },
-        {
-          id: 3,
-          name: "Dr.Alia",
-          location: "Egypt",
-          rate: 5,
-          img: "doc3",
-          desc:'Tumor specialist3'
-        },
-      ],
-    });
-    onMounted:{
-      state.filteredItems=state.doctors.filter(item => item.id == props.id);
-      state.filteredItems=state.filteredItems[0];
-      console.log(state.filteredItems.img);
-    }
-  return { state };
-}
+
+  async mounted() {
+    await axios
+      .get(
+        "api/v1/user/"+this.id 
+        )
+      .then((res) => {
+        this.filteredItems=res.data;
+      // console.log(this.filteredItems);
+      })
+      .catch((error) => {
+        console.log(error);
+        // console.log(error.response.s);
+      });
+  },
+
   
 
 }

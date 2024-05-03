@@ -36,24 +36,27 @@
           <!-- <button type="button">Upload</button> -->
         </div>
         <div class="submit">
-          <button @click="submitmodel" class="btnlink">Scan</button>
-          <!-- <button @click="submitmodel" class="btnlink"> Scan2 </button> -->
+          <button @click="submitmodel" class="btnlink">brain tumor</button>
+          <button @click="submitmodel2" class="btnlink"> brain stroke </button>
         </div>
-        
       </div>
     </div>
   </div>
-  <div :class="'col-12 text-center m-5'+ datas=='1'?'text-danger ':'text-success'">
+  <div :class=" datas==1?'text-danger col-12 text-center m-5 ':'text-success col-12 text-center m-5'">
     <div class="result" v-if="ress">
           <div class="have  ">
             <h2>{{ canser }}</h2>
           </div>
         </div>
   </div>
+  
 </template>
 <script>
 import axios from "axios";
 export default {
+  props:{
+    userid:String
+  },
   data() {
     return {
       images: [],
@@ -111,7 +114,7 @@ export default {
     async submitmodel() {
       await axios
         .post(
-          "image/upload",
+          "image/upload/"+ this.userid,
           {
             image: this.image,
             typeModel: 1,
@@ -127,6 +130,30 @@ export default {
           this.ress = true;
           this.canser = res.data.canser;
           this.datas = res.data.No;
+        })
+        .catch((err) => console.log(err));
+      // console.log(this.image[0]);
+    },
+    async submitmodel2() {
+      console.log(22222222222);
+      await axios
+        .post(
+          "image/upload/"+ this.userid,
+          {
+            image: this.image,
+            typeModel: 2,
+          },
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          this.ress = true;
+          this.canser = res.data.canser;
+          this.datas = 1;
         })
         .catch((err) => console.log(err));
       // console.log(this.image[0]);

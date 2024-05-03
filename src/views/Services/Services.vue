@@ -12,7 +12,7 @@
           <img src="../../assets/serv.png" alt="">
         </div>
       </div>
-      <Secvices />
+      <Secvices :userid="store.state.patient.id" />
       
       
     </div>
@@ -52,7 +52,7 @@ export default {
         }
       
     };
-    return { state, login };
+    return { state,store };
   },
 };
 </script>
