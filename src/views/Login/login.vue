@@ -97,7 +97,7 @@ export default {
             email: state.email,
             password: state.password,
           });
-          if(store.state.patient.roles[0].name=="doctor")
+          if(store.state.patient.roles!=null&&store.state.patient.roles[0].name=="doctor")
           {
             router.push("/dprofile/"+store.state.patient.id);
           }
