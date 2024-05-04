@@ -4,7 +4,7 @@
     <h1>Meet Our Professional Doctors</h1>
     <div class="cards">
       <div class="card" v-for="item in doctors" :key="item.id">
-        <img :src="item.img" alt="" />
+        <img :src="item.imageProfile" alt="" />
         <div class="details">
           <h2>{{ item.firstName +' '+item.lastName }}</h2>
           <p>
