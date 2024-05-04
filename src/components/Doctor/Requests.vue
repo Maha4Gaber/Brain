@@ -75,6 +75,7 @@ props: {
     let confirm = async (id)=>{
       await axios.put('api/v1/appointment/confirm/'+id)
       .then(res=>{
+        state.Booked=state.Booked.filter((item) => item.id !==id)
         console.log(res.data);
       })
       .catch(err=>{
@@ -84,6 +85,7 @@ props: {
     let cancel = async (id)=>{
       await axios.put('api/v1/appointment/cancle/'+id)
       .then(res=>{
+        state.Booked=state.Booked.filter((item) => item.id !==id)
         console.log(res.data);
       })
       .catch(err=>{
