@@ -94,7 +94,7 @@ export default {
           date:'8 - 5 - 2024'
         },
         {
-          id: 1,
+          id: 4,
           day: "Thursday",
           from: "1.00",
           to:'3.00',

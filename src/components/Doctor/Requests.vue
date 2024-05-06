@@ -62,8 +62,9 @@ props: {
           let userid=store.state.patient.id
           await axios.get('api/v1/appointment/userId/'+userid)
           .then(res=>{
-            // console.log(res.data);
-            
+
+            console.log(res.data);
+            state.Booked=res.data.filter(item=> item.user[0].id == props.userid)
             state.Booked=res.data.filter(item=> item.cancle != true )
             // console.log(state.Booked);
             
