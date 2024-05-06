@@ -62,7 +62,7 @@ export default {
         "api/v1/user/role?roleName=doctor" 
         )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.doctors = res.data;
       })
       .catch((error) => {

@@ -12,7 +12,7 @@
           <img src="../../assets/serv.png" alt="">
         </div>
       </div>
-      <Secvices :userid="store.state.patient.id" />
+      <Secvices :userid="state.userid" />
       
       
     </div>
@@ -35,23 +35,17 @@ export default {
   setup() {
     const state = reactive({
       image: "",
+      userid:null
     });
     const store = useStore();
     const router = useRouter();
     onMounted(() => {
-      store.state.patient
+      state.userid=store.state.patient
       if (store.state.patient == null) {
         router.push("/login");
       }
     });
-    const login = async () => {
-        try {
-          
-        } catch (err) {
-          console.log(err);
-        }
-      
-    };
+    
     return { state,store };
   },
 };

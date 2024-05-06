@@ -3,16 +3,16 @@
     <div class="row">
        <div class="col-lg-3 col-md-4">
         <div class="image">
-          <!-- <img :src="state.filteredItems.img" alt=""> -->
+          <img :src="state.filteredItems.imageProfile" alt="">
         </div>
       </div>
       <div class="col-lg-9 col-md-8">
         <div class="details">
-          <h2>{{ filteredItems.firstName +' '+filteredItems.lastName }}</h2>
-          <h3>{{ filteredItems.desc }}</h3>
+          <h2>{{ state.filteredItems.firstName +' '+state.filteredItems.lastName }}</h2>
+          <h3>{{ state.filteredItems.desc }}</h3>
           <p>
             <i class="fa-solid fa-location-dot"></i>
-            {{ filteredItems.location }}</p>
+            {{ state.filteredItems.location }}</p>
           <div class="stars">
             <h4>Rate here</h4>
             <i
@@ -30,7 +30,10 @@
   </div>
 </template>
 <script>
-import { reactive,computed,onMounted } from "vue";
+import { computed, onMounted, reactive } from "vue";
+
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import Appointments from '@/components/Doctor/Appointments'
 import Booked from '@/components/Doctor/Booked.vue'
 import axios from "axios";
@@ -42,26 +45,38 @@ export default {
 
 data() {
     return {
-      filteredItems:{}
     };
   },
   props: {
     id: String,
   },
-
-  async mounted() {
-    await axios
+  
+  setup(props) {
+    const state = reactive({
+        filteredItems:{},
+    });
+    const store = useStore();
+    const router = useRouter();
+    onMounted(async() => {
+      if (store.state.patient == null) {
+        router.push("/login");
+      }
+      else{
+        await axios
       .get(
-        "api/v1/user/"+this.id 
+        "api/v1/user/"+props.id 
         )
       .then((res) => {
-        this.filteredItems=res.data;
-      // console.log(this.filteredItems);
+        state.filteredItems=res.data;
       })
       .catch((error) => {
         console.log(error);
         // console.log(error.response.s);
       });
+      }
+    });
+    
+    return { state };
   },
 
   
