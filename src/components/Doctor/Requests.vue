@@ -62,14 +62,13 @@ props: {
           let userid=store.state.patient.id
           await axios.get('api/v1/appointment/userId/'+userid)
           .then(res=>{
-            console.log('====================================');
-            console.log(res.data);
-            console.log('====================================');
-            state.Booked=res.data.filter(item=> item.cancle != null || item.confirmed != null)
-            console.log('====================================');
-            console.log(state.Booked);
-            console.log('====================================');
-            // state.Booked=res.data.filter(item=> item.confirmed != null)
+            // console.log(res.data);
+            
+            state.Booked=res.data.filter(item=> item.cancle != true )
+            // console.log(state.Booked);
+            
+            state.Booked=state.Booked.filter(item=> item.confirmed != true)
+            // console.log(state.Booked);
             
           })
           .catch(err=>{
