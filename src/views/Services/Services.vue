@@ -40,9 +40,10 @@ export default {
     const store = useStore();
     const router = useRouter();
     onMounted(() => {
-      state.userid=store.state.patient
+      state.userid=store.state.patient.id
       if (store.state.patient == null) {
         router.push("/login");
+        
       }
     });
     

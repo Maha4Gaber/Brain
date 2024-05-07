@@ -135,10 +135,10 @@ export default {
       // console.log(this.image[0]);
     },
     async submitmodel2() {
-      console.log(22222222222);
+      console.log(this.userid);
       await axios
         .post(
-          "image/upload/"+ this.userid,
+          "image/upload/" + this.userid,
           {
             image: this.image,
             typeModel: 2,
