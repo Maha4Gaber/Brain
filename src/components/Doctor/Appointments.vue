@@ -8,7 +8,7 @@
     <div class="boxs" >
       <div class="box"  v-for=" item in state.Booked"  :key="item.id">
         <div class="name">
-          {{ item.user[0].firstName + ' ' + item.user[0].lastName}}
+          {{ item.user[1].firstName + ' ' + item.user[1].lastName}}
         </div>
         <div class="day">
           {{item.day}}
@@ -74,8 +74,17 @@ props: {
           let userid=store.state.patient.id
           await axios.get('api/v1/appointment/userId/'+userid)
           .then(res=>{
-            console.log(res.data.filter(item=> item.user[0].id == props.id));
-            state.Booked=res.data.filter(item=> item.user[0].id == props.id)
+            // console.log(res.data);
+
+            // console.log(res.data[0]);
+            state.Booked=res.data
+            state.Booked.map(item=>{
+              item.user.sort(function(a, b) { 
+              return  ( a.id - b.id   );
+            })
+            })
+            console.log(state.Booked);
+            state.Booked=res.data.filter(item=> item.user[1].id == props.id)
             
           })
           .catch(err=>{

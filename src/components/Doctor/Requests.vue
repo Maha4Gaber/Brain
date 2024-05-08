@@ -8,8 +8,8 @@
     <div class="boxs">
       <div class="box" v-for="item in state.Booked" :key="item.id" >
         <div class="name">
-          {{  item.user[1].firstName }}
-          {{  item.user[1].lastName }}
+          {{  item.user[0].firstName }}
+          {{  item.user[0].lastName }}
         </div>
         <div class="day">
           {{ item.day }}
@@ -64,7 +64,14 @@ props: {
           .then(res=>{
 
             console.log(res.data);
-            state.Booked=res.data.filter(item=> item.user[0].id == props.userid)
+            state.Booked=res.data
+            state.Booked.map(item=>{
+              item.user.sort(function(a, b) { 
+              return  ( a.id - b.id   );
+            })
+            })
+            console.log(state.Booked);
+            state.Booked=res.data.filter(item=> item.user[1].id == props.id)
             state.Booked=res.data.filter(item=> item.cancle != true )
             // console.log(state.Booked);
             
