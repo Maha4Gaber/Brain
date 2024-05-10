@@ -1,7 +1,7 @@
 <template>
   <div class="about1 container  ">
         <div class="title">
-          <h1>Brain toumors</h1>
+          <h1>Brain Tumor</h1>
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-12">

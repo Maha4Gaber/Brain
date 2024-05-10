@@ -1,10 +1,5 @@
 <template>
   <div class="col-lg-6 col-sm-12">
-        <div class="image">
-          <img src="..//../assets/serv.png" alt="">
-        </div>
-      </div>
-  <div class="col-lg-6 col-sm-12">
     <div class="scan">
       <div class="box">
         <div class="card">
@@ -41,12 +36,17 @@
           <!-- <button type="button">Upload</button> -->
         </div>
         <div class="submit">
-          <button @click="submitmodel" class="btnlink">brain tumor</button>
-          <!-- <button @click="submitmodel2" class="btnlink"> brain stroke </button> -->
+          <button @click="submitmodel2" class="btnlink"> brain stroke </button>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-lg-6 col-sm-12">
+        <div class="image">
+          <img src="..//../assets/serv.png" alt="">
+        </div>
+      </div>
+  
   <div v-if="ress" :class=" datas==1?'text-danger col-6 text-center m-5 ':'text-success col-6 text-center m-5'">
     <div class="result" v-if="ress">
           <div class="have  ">

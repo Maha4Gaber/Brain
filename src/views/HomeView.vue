@@ -2,10 +2,9 @@
   <div class="container home">
     <div class="row section1">
       <div class="col-lg-7 mt-5 col-sm-12">
-        <h1>Hello Doctors</h1>
+        <h1>Automated Detection of Brain Tumor and Stroke Using Al</h1>
         <p>
-          Get instant update about the patient history, medical request and
-          manage appointments.
+          This website offers a cutting-edge solution for the early detection and diagnosis of brain tumors and strokes using advanced artificial intelligence (AI) algorithms. By leveraging deep learning and image processing techniques.
         </p>
         <router-link to="/about" class="btnlink mt-5">Read More</router-link>
       </div>

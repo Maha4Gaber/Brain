@@ -1,29 +1,26 @@
 <template>
   <div class="about1 container  ">
         <div class="title">
-          <h1>Brain toumors 2</h1>
+          <h1>Brain Stroke</h1>
         </div>
         <div class="row">
           <div class="col-lg-8 col-md-12">
             <h3>Symptoms</h3>
             <p>
-              If you are experiencing new. server, or persistent
-              symptoms,contact a health care provider.<br />
-              Meningioma brain tumor usually comes with no symptoms, as it grows
-              gradually the patient may show the following symptoms:
+              
+
+
+
+
             </p>
             <ul>
-              <li>Headache which gets severe with time</li>
-              <li>change in vision causing double or blurred vision</li>
-              <li>Hearing disability</li>
+              <li>Numbness or weakness in the face, arm, or leg, especially on one side of the body.</li>
+              <li>Confusion or trouble speaking or understanding speech.</li>
+              <li>Trouble seeing in one or both eyes.</li>
               <li>
-                Ringing in ears Loss of memory and diggiculty in concentrating
+                Troublé walking, dizziness, or problems with balance.
               </li>
-              <li>Weakness in arms and legs</li>
-              <li>Loss of smell</li>
-              <li>Seizures</li>
-              <li>Numbness</li>
-              <li>Speech problems</li>
+              <li>Severe headache with no known cause .</li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-12">

@@ -84,7 +84,7 @@ props: {
             })
             })
             console.log(state.Booked);
-            state.Booked=res.data.filter(item=> item.user[1].id == props.id)
+            state.Booked=state.Booked.filter(item=> item.user[0].id == props.id)
             
           })
           .catch(err=>{

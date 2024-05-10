@@ -7,12 +7,13 @@
       
     </div>
     <div class="row">
-      <div class="col-lg-6 col-sm-12">
+      <!-- <div class="col-lg-6 col-sm-12">
         <div class="image">
           <img src="../../assets/serv.png" alt="">
         </div>
-      </div>
+      </div> -->
       <Secvices :userid="state.userid" />
+      <Secvices2 :userid="state.userid" />
       
       
     </div>
@@ -26,11 +27,13 @@ import { computed, onMounted, reactive } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import Secvices from '../../components/Services/Secvices.vue'
+import Secvices2 from '../../components/Services/Secvices2.vue'
 import Doctor from "@/components/Doctor/Doctor.vue";
 export default {
   components:{
     Secvices,
-    Doctor
+    Doctor,
+    Secvices2
   },
   setup() {
     const state = reactive({
