@@ -1,10 +1,17 @@
 <template>
+    
+
   <div class="col-lg-6 col-sm-12">
+    
     <div class="scan">
+      
       <div class="box">
+        <div class="col-12 mt-5      ">
+      <h2>For Brain Stroke</h2>
+    </div>
         <div class="card">
           <div class="top">
-            <p>Upload photo here</p>
+            <p>Upload CT Scan here</p>
           </div>
 
           <div
@@ -36,24 +43,20 @@
           <!-- <button type="button">Upload</button> -->
         </div>
         <div class="submit">
-          <button @click="submitmodel2" class="btnlink"> brain stroke </button>
+          <button @click="submitmodel2" class="btnlink"> Scan </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-6 col-sm-12">
-        <div class="image">
-          <img src="..//../assets/serv.png" alt="">
-        </div>
-      </div>
-  
-  <div v-if="ress" :class=" datas==1?'text-danger col-6 text-center m-5 ':'text-success col-6 text-center m-5'">
+  <div v-if="ress" :class=" datas==1?'text-danger col-lg-5 col-sm-12 text-center my-5 ':'text-success col-lg-5 col-sm-12 text-center my-5'">
     <div class="result" v-if="ress">
           <div class="have  ">
             <h2>{{ canser }} </h2>
           </div>
         </div>
   </div>
+  
+
   
 </template>
 <script>
@@ -174,7 +177,7 @@ export default {
   overflow: hidden;
   width: 80%;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 20px;
   padding: 50px 20px 20px;
   p {
     color: var(--textcolor);
