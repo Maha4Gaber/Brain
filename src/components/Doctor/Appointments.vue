@@ -8,7 +8,7 @@
     <div class="boxs" >
       <div class="box"  v-for=" item in state.Booked"  :key="item.id">
         <div class="name">
-          {{ item.user[1].firstName + ' ' + item.user[1].lastName}}
+          {{ item.user[0].firstName + ' ' + item.user[0].lastName}}
         </div>
         <div class="day">
           {{item.day}}
