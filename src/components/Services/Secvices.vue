@@ -1,7 +1,7 @@
 <template>
   
       
-  <div class="col-lg-6 col-sm-12">
+  <div class="col-lg-6 col-sm-12 text-center my-5 ">
     
     <div class="scan">
       <div class="box">
@@ -43,23 +43,41 @@
           <!-- <button type="button">Upload</button> -->
         </div>
         <div class="submit">
-          <button @click="submitmodel" class="btnlink">Scan</button>
+          <!-- <button @click="submitmodel" class="btnlink">Scan</button> -->
+          <button @click="submitmodel" :disabled="image==''?true:false" class="btnlink"> Scan </button>
+          <p class="text-danger  pt-2" v-if="image==''">You should upload img</p>
           <!-- <button @click="submitmodel2" class="btnlink"> brain stroke </button> -->
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-6 col-sm-12">
+  <!-- <div class="col-lg-6 col-sm-12 ">
         <div class="image">
           <img src="..//../assets/serv.png" alt="">
         </div>
-      </div>
-  <div v-if="ress" :class=" datas==1?'text-danger col-6 text-center my-5 ':'text-success col-6 text-center my-5'">
-    <div class="result" v-if="ress">
-          <div class="have  ">
-            <h2>{{ canser }} </h2>
+      </div> -->
+  <div  :class="' col-lg-6 col-sm-12 text-center    '">
+    <div class="scan">
+      <div class="box">
+        <div class="col-12  mt-5    ">
+      <h2>The Result</h2>
+    </div>
+        <div class="card">
+          <div  class="  result " >
+          <div   :class=" datas==1?'text-danger have text-center  ':'text-success have text-center '" >
+            <h2 v-if="ress">{{ canser }} </h2>
           </div>
         </div>
+      </div>
+      <div class="submit">
+          <!-- <button @click="submitmodel" class="btnlink">Scan</button> -->
+          <!-- <button @click="submitmodel2" class="btnlink"> brain stroke </button> -->
+        </div>
+    </div>
+      
+    </div>
+
+    
   </div>
   
 </template>
@@ -74,7 +92,7 @@ export default {
       images: [],
       isDragging: false,
       image: "",
-      ress: false,
+      ress: true,
       datas: null,
       canser: "",
     };
@@ -99,6 +117,7 @@ export default {
     },
     deleteImage(index) {
       this.images.splice(index, 1);
+      this.image=""
     },
     onDragOver(event) {
       event.preventDefault();
@@ -124,7 +143,8 @@ export default {
       }
     },
     async submitmodel() {
-      await axios
+      if (!this.image=='') {
+        await axios
         .post(
           "image/upload/"+ this.userid,
           {
@@ -144,6 +164,7 @@ export default {
           this.datas = res.data.No;
         })
         .catch((err) => console.log(err));
+      }
       // console.log(this.image[0]);
     },
     async submitmodel2() {
@@ -231,15 +252,20 @@ export default {
     border: none;
   }
 }
-.have{
-  border-radius: 10px;
+.border-3{
+
   border: 3px dashed var(--textcolor);
-  text-align: center;
-  overflow: hidden;
-  width: 80%;
-  margin: auto;
-  margin-top: 80px;
-  padding: 50px 20px 20px;
+  border-radius: 10px;
+  // height: 200px;
+}
+.have{
+  // border-radius: 10px;
+  // text-align: center;
+  // overflow: hidden;
+  // width: 80%;
+  // margin: auto;
+  // margin-top: 80px;
+  // padding: 50px 20px 20px;
 }
 .card input,
 .card .drag-area .on-drag,

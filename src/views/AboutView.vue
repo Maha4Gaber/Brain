@@ -71,7 +71,7 @@ export default {
 <style lang="scss" scoped>
 .Swiper {
   margin: 100px 0 0 0;
-  
+  font-size: larger;
   
 }
 </style>

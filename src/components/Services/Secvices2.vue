@@ -43,17 +43,34 @@
           <!-- <button type="button">Upload</button> -->
         </div>
         <div class="submit">
-          <button @click="submitmodel2" class="btnlink"> Scan </button>
+          <button @click="submitmodel2" :disabled="image==''?true:false" class="btnlink"> Scan </button>
+          <p class="text-danger  pt-2" v-if="image==''">You should upload img</p>
         </div>
       </div>
     </div>
   </div>
-  <div v-if="ress" :class=" datas==1?'text-danger col-lg-5 col-sm-12 text-center my-5 ':'text-success col-lg-5 col-sm-12 text-center my-5'">
-    <div class="result" v-if="ress">
-          <div class="have  ">
-            <h2>{{ canser }} </h2>
+    <div  :class="' col-lg-6 col-sm-12 text-center    '">
+    <div class="scan">
+      <div class="box">
+        <div class="col-12  mt-5    ">
+      <h2>The Result</h2>
+    </div>
+        <div class="card">
+          <div  class="  result " >
+          <div   :class=" datas==1?'text-danger have text-center  ':'text-success have text-center '" >
+            <h2 v-if="ress">{{ canser }} </h2>
           </div>
         </div>
+      </div>
+      <div class="submit">
+          <!-- <button @click="submitmodel" class="btnlink">Scan</button> -->
+          <!-- <button @click="submitmodel2" class="btnlink"> brain stroke </button> -->
+        </div>
+    </div>
+      
+    </div>
+
+    
   </div>
   
 
@@ -95,6 +112,7 @@ export default {
     },
     deleteImage(index) {
       this.images.splice(index, 1);
+      this.image=""
     },
     onDragOver(event) {
       event.preventDefault();
@@ -143,8 +161,9 @@ export default {
       // console.log(this.image[0]);
     },
     async submitmodel2() {
-      console.log(this.userid);
-      await axios
+      // console.log(this.userid);
+      if (!this.image=='') {
+        await axios
         .post(
           "image/upload/" + this.userid,
           {
@@ -164,7 +183,8 @@ export default {
           this.datas = 1;
         })
         .catch((err) => console.log(err));
-      // console.log(this.image[0]);
+      }
+      // console.log(this.image);
     },
   },
 };
@@ -228,14 +248,14 @@ export default {
   }
 }
 .have{
-  border-radius: 10px;
-  border: 3px dashed var(--textcolor);
-  text-align: center;
-  overflow: hidden;
-  width: 80%;
-  margin: auto;
-  margin-top: 80px;
-  padding: 50px 20px 20px;
+  // border-radius: 10px;
+  // border: 3px dashed var(--textcolor);
+  // text-align: center;
+  // overflow: hidden;
+  // width: 80%;
+  // margin: auto;
+  // margin-top: 80px;
+  // padding: 50px 20px 20px;
 }
 .card input,
 .card .drag-area .on-drag,

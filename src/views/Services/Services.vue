@@ -6,7 +6,7 @@
       </h1>
       
     </div>
-    <div class="row">
+    <div class="row align-items-center">
       <!-- <div class="col-lg-6 col-sm-12">
         <div class="image">
           <img src="../../assets/serv.png" alt="">
@@ -43,10 +43,9 @@ export default {
     const store = useStore();
     const router = useRouter();
     onMounted(() => {
-      state.userid=store.state.patient.id
       if (store.state.patient == null) {
+        state.userid=store.state.patient?store.state.patient.id:null
         router.push("/login");
-        
       }
     });
     
@@ -58,6 +57,7 @@ export default {
 <style lang="scss">
 .services{
   margin-top: 80px;
+  // align-items: center;
   h1{
     color: var(--textcolor);
     font-weight: 600;
